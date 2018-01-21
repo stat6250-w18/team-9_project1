@@ -1,3 +1,0 @@
-
-
-Team Nickname: The Moonlighters
