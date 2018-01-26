@@ -14,7 +14,7 @@ Service, County-level Data Sets
 
 [Number of Observations] 3274
 
-[Number of Features] 48
+[Number of Features] 47
 
 [Data Source] https://www.ers.usda.gov/webdocs/DataFiles/48747/Unemployment.xls?v=42894
 
