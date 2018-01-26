@@ -6,8 +6,7 @@
 * 
 This file prepares the dataset described below for analysis.
 
-[Dataset Name] Employment, Unemployment, and Median Household Income (annual 
-average 2016 unemployment and 2015 income latest)
+[Dataset Name] Employment, Unemployment(2007-2016), and Median Household Income (2015 only)
 
 [Experimental Units] United States Department of Agriculture Economic Research 
 Service, County-level Data Sets
