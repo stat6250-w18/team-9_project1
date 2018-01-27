@@ -177,12 +177,12 @@ data unemployment_analytic_file;
 		Civilian_labor_force_2015
 		Employed_2015
 		Unemployed_2015
-		Unemployment_rate_2015
+		Unemployment_2015_rate
 		Civilian_labor_force_2016
 		Employed_2016
 		Unemployed_2016
 		Unemployment_rate_2016
-		Median_Household_Income_2015
+		Median_Household_2015_Income
 		
     ;
 	keep
@@ -227,14 +227,15 @@ data unemployment_analytic_file;
 		Civilian_labor_force_2015
 		Employed_2015
 		Unemployed_2015
-		Unemployment_rate_2015
+		Unemployment_2015_rate
 		Civilian_labor_force_2016
 		Employed_2016
 		Unemployed_2016
 		Unemployment_rate_2016
-		Median_Household_Income_2015
+		Median_Household_2015_Income
 		
     ;
 	set Unemployment_raw;
 run;
+
 
