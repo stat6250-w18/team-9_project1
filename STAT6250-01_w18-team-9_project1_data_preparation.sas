@@ -12,7 +12,7 @@ average 2016 unemployment and 2015 income latest)
 [Experimental Units] United States Department of Agriculture Economic Research 
 Service, County-level Data Sets
 
-[Number of Observations] 3274
+[Number of Observations] 3223
 
 [Number of Features] 48
 
@@ -20,8 +20,7 @@ Service, County-level Data Sets
 
 [Data Dictionary] https://www.ers.usda.gov/data-products/county-level-data-sets/
 
-FIPStxt:Dataset unique identifier, (renamed FIPStxt to FIPS_Code as a primary 
-key to match variable decscription databse) 
+FIPStxt:Dataset unique identifier, primary key 
 State:State-County
 Area_name:State or County name
 Rural_urban_continuum_code_2013:Rural-urban Continuum Code, 2013
@@ -70,7 +69,7 @@ Unemployed_2016:Number unemployed annual average, 2016
 Unemployment_rate_2016:Unemployment rate, 2016
 Median_Household_Income_2015:Median household Income Annual Average, 2015
 Med_HH_Income_Percent_of_State_Total_2015:County Household Median Income as 
-a percent of the State Total Median Household Income (deleted)
+a percent of the State Total Median Household Income
 
 [Unique ID Schema] The column ‘FIPS_Code’ is a primary key.
 ;
@@ -178,12 +177,12 @@ data unemployment_analytic_file;
 		Civilian_labor_force_2015
 		Employed_2015
 		Unemployed_2015
-		Unemployment_rate_2015
+		Unemployment_2015_rate
 		Civilian_labor_force_2016
 		Employed_2016
 		Unemployed_2016
 		Unemployment_rate_2016
-		Median_Household_Income_2015
+		Median_Household_2015_Income
 		
     ;
 	keep
@@ -228,14 +227,13 @@ data unemployment_analytic_file;
 		Civilian_labor_force_2015
 		Employed_2015
 		Unemployed_2015
-		Unemployment_rate_2015
+		Unemployment_2015_rate
 		Civilian_labor_force_2016
 		Employed_2016
 		Unemployed_2016
 		Unemployment_rate_2016
-		Median_Household_Income_2015
+		Median_Household_2015_Income
 		
     ;
 	set Unemployment_raw;
 run;
-
