@@ -16,7 +16,8 @@ Service, County-level Data Sets
 
 [Number of Features] 47
 
-[Data Source] https://www.ers.usda.gov/webdocs/DataFiles/48747/Unemployment.xls?v=42894
+[Data Source] 
+https://www.ers.usda.gov/webdocs/DataFiles/48747/Unemployment.xls?v=42894
 
 [Data Dictionary] https://www.ers.usda.gov/data-products/county-level-data-sets/
 
