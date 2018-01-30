@@ -6,7 +6,8 @@
 * 
 This file prepares the dataset described below for analysis.
 
-[Dataset Name] Employment, Unemployment(2007-2016), and Median Household Income (2015 only)
+[Dataset Name] Employment, Unemployment(2007-2016), and Median Household Income 
+(2015 only)
 
 [Experimental Units] United States Department of Agriculture Economic Research 
 Service, County-level Data Sets
@@ -19,7 +20,7 @@ Service, County-level Data Sets
 
 [Data Dictionary] https://www.ers.usda.gov/data-products/county-level-data-sets/
 
-FIPStxt:Dataset unique identifier, primary key 
+FIPS_Code:Dataset unique identifier, primary key 
 State:State-County
 Area_name:State or County name
 Rural_urban_continuum_code_2013:Rural-urban Continuum Code, 2013
@@ -236,8 +237,5 @@ data unemployment_analytic_file;
     ;
 	set Unemployment_raw;
 run;
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 90128ad815c39550f18f2b3997a39954b8f12f3d
