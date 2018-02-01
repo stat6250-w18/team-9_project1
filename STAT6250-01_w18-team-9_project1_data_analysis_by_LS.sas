@@ -5,11 +5,13 @@
 
 *
 This file uses the following analytic dataset to address several research
-questions regarding Employment, Unemployment rate(2007-2016) 
-and Median homehold Income(2015)
-Dataset Name: Unemployment_analytic_file created in external file
-STAT6250-01_s18-team-9_project1_data_preparation.sas, which is assumed to be
-in the same directory as this file
+questions regarding Employment, Unemployment rate(2007-2016) and Median
+homehold Income(2015) in U.S.A.
+
+Dataset Name: Unemployment_analytic_file created in external file 
+STAT6250-01_s18-team-9_project1_data_preparation.sas, which is assumed to be 
+in the same directory as this file.
+
 See included file for dataset properties
 ;
 
@@ -45,8 +47,10 @@ footnote3
 *
 Methodology: Compute five-number summaries about the civilian labor force 
 and the unemployment rate.
+
 Limitations:  This methodology does not account for state with missing data,
 nor does it attempt to validate data in any way.
+
 Possible Follow-up Steps:  More carefully clean the values of the variable
 Unemployment_rate_2016 and civilian_labor_force so that the statistics computed
 do not include anypossible illegal values, and better handle missing data.
@@ -91,9 +95,11 @@ footnote3
 Methodology: Use PORC SORT to decending the column "Unemployment_rate_2016",
 and Use PROC PRINT to print just the first twenty observations from
 the dataset file.
+
 Limitations: If there are duplicate values with respect to the columns 
 specified, thenrows are typically moved around as little as possible, 
 meaning that they willremain in the same order as in the original dataset.
+
 Possible Follow-up Steps: More carefully clean the duplicate values of 
 the variableunemployment rate before we submit this code, do some 
 noduplicate checks in data prep file.
@@ -144,8 +150,10 @@ footnote3
 Methodology: Use PORC MEANS to max, min and range the data of
 "Unemployment_rate_2016" for "state" and output the results 
 to a temporary dataset.
+
 Limitations:  This methodology does not account for state with
 missing data, nor does it attempt to validate data in any way.
+
 Possible Follow-up Steps:  More carefully clean the values of 
 the variable Unemployment_rate_2016 so that the statistics computed 
 do not include any possible illegal values, and better handle 
