@@ -253,4 +253,33 @@ data unemployment_analytic_file;
 	set Unemployment_raw;
 run;
 
+*
+Use proc means to study the unemployment rate and median household
+income of state, and output the results to a temporary dataset, and use PROC 
+SORT to extract and sort just the means the temporary dateset, which will be
+used as part of data analysis by XY.
+;
 
+proc means
+        mean
+        noprint
+        data=unemployment_analytic_file
+    ;
+    class
+        State
+    ;
+    var
+        Median_Household_2015_Income Unemployment_2015_rate
+    ;
+    output
+        out=unemployment_analytic_file_temp
+    ;
+run;
+
+proc sort
+        data=unemployment_analytic_file_temp(where=(_STAT_="MEAN"))
+    ;
+    by
+        descending Unemployment_2015_rate
+    ;
+run;
