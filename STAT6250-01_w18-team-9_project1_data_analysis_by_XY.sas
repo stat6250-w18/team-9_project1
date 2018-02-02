@@ -17,8 +17,7 @@ See included file for dataset properties
 * environmental setup;
 
 * set relative file import path to current directory (using standard SAS trick);
-X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
-TH))-%length(%sysget(SAS_EXECFILENAME))))""";
+X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPATH))-%length(%sysget(SAS_EXECFILENAME))))""";
 
 
 
@@ -27,28 +26,23 @@ TH))-%length(%sysget(SAS_EXECFILENAME))))""";
 
 
 title1
-'Research Question1: What is the mean value for unempolyment and median 
-household income in the US in 2015?'
+'Research Question1: What is the mean value for unempolyment and median household income in the US in 2015?'
 ;
 
 title2
-'Rationale: This should help provide basic information on unemployment and 
-household income status.'
+'Rationale: This should help provide basic information on unemployment and household income status.'
 ;
 
 footnote1
-'Based on the above output, the average value for unemployment in the U.S. in 
-2015 is 5.74, meaning 5.74% of the total labor force is not being employed.'
+'Based on the above output, the average value for unemployment in the U.S. in 2015 is 5.74, meaning 5.74% of the total labor force is not being employed.'
 ;
 
 footnote2
-'Moreover, we can see that the average median household income in the U.S. in 
-2015 is 48724.97 dollars.'
+'Moreover, we can see that the average median household income in the U.S. in 2015 is 48724.97 dollars.'
 ;
 
 footnote3
-'The income and emplpoyment statistics will be an indicator for the following 
-data analysis steps, it is meaningful to look at into states statistics.'
+'The income and emplpoyment statistics will be an indicator for the following data analysis steps, it is meaningful to look at into states statistics.'
 ;
 
 *
@@ -82,30 +76,23 @@ footnote;
 
 
 title1
-'Research Question2: What are the top 10 states with the highest mean values 
-of unemployment rate in 2015?'
+'Research Question2: What are the top 10 states with the highest mean values of unemployment rate in 2015?'
 ;
 
 title2
-'Rationale: This should show the states in the most need of improving 
-emloyment status.'
+'Rationale: This should show the states in the most need of improving emloyment status.'
 ;
 
 footnote1
-'Based on the above output, PR has the highest unemployment rate of 14.17%, 
-which is almost 2.5 times of national average rate.'
+'Based on the above output, PR has the highest unemployment rate of 14.17%, which is almost 2.5 times of national average rate.'
 ;
 
 footnote2
-'When we compare the state median household income with the top ten highest
-unemployment rate states, we found all the states, execpt for PR and AK, are
-all below the national average household income amount.'
+'When we compare the state median household income with the top ten highestunemployment rate states, we found all the states, execpt for PR and AK, are all below the national average household income amount.'
 ;
 
 footnote3
-'Surprisingly, AK is the only state with both high unemployment rate
-(1.63 times national average) and high median household income(1.25 times 
-of national average).'
+'Surprisingly, AK is the only state with both high unemployment rate(1.63 times national average) and high median household income(1.25 times of national average).'
 ;
 
 *
@@ -159,28 +146,19 @@ title;
 footnote;
 
 title1
-'Research Question3: Can "Unemployment Rate" be used to predict "Median 
-household income"?'
+'Research Question3: Can "Unemployment Rate" be used to predict "Median household income"?'
 ;
 
 title2
-'Rationale: This would help determine whether outreach based upon high 
-unemployment rate should be provided to increase household income. 
-E.g., if unemployment is highly correlated with median household income, 
-then areas with lower unemployment rate tend to have higher median household 
-income.'
+'Rationale: This would help determine whether outreach based upon high unemployment rate should be provided to increase household income. E.g., if unemployment is highly correlated with median household income, then areas with lower unemployment rate tend to have higher median household income.'
 ;
 
 footnote1
-"Based on the above output, there's no clear inferential pattern for predicting
-the unemployment rate from the median household income since cell counts don't
-tend to follow trends for increasing or decreasing consistently."
+"Based on the above output, there's no clear inferential pattern for predictingthe unemployment rate from the median household income since cell counts don't tend to follow trends for increasing or decreasing consistently."
 ;
 
 footnote2
-'However, this is an incredibly course analysis since only quartiles are used,
-so a follow-up analysis using a more sensitive instrument (like beta regression)
-might find useful correlations.'
+'However, this is an incredibly course analysis since only quartiles are used, so a follow-up analysis using a more sensitive instrument (like beta regression) might find useful correlations.'
 ;
 *
 Methodology: Use Proc format to create formats to bin values of 
@@ -197,20 +175,6 @@ statistical technique like beta regression, or use linear regression models
 to find the relationship.
 ;
 
-proc format;
-    value Median_Household_2015_Income_bins
-        low-40572="Q1 Income"
-        40572-48724.97="Q2 Income"
-        48724.97-54337="Q3 Income"
-        54337-high="Q4 Income"
-    ;
-    value Unemployment_2015_rate_bins
-        low-<4.2="Q1 UR "
-        4.2-<5.74="Q2 UR "
-        5.74-<6.6="Q3 UR"
-        6.6-high="Q4 UR"
-    ;
-run;
 proc freq
     data=unemployment_analytic_file
     ;
