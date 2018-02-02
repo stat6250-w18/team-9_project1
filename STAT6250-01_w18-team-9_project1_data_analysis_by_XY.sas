@@ -175,20 +175,6 @@ statistical technique like beta regression, or use linear regression models
 to find the relationship.
 ;
 
-proc format;
-    value Median_Household_2015_Income_bins
-        low-40572="Q1 Income"
-        40572-48724.97="Q2 Income"
-        48724.97-54337="Q3 Income"
-        54337-high="Q4 Income"
-    ;
-    value Unemployment_2015_rate_bins
-        low-<4.2="Q1 UR "
-        4.2-<5.74="Q2 UR "
-        5.74-<6.6="Q3 UR"
-        6.6-high="Q4 UR"
-    ;
-run;
 proc freq
     data=unemployment_analytic_file
     ;
