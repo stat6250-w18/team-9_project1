@@ -96,10 +96,8 @@ footnote3
 ;
 
 *
-Methodology: Use proc means to study the unemployment rate and median household
-income of state,with proc sort to get first 10 observations with highest 
-unemployment rate.
-.
+Methodology: Use PROC PRINT to print just the first 10 observations from
+the temporary dataset created in the corresponding data-prep file.
 
 Limitations: The missing data is not well treated, such as counties in AK.
 Those will underestimate/overestimate the average statewide rate.
@@ -107,29 +105,6 @@ Those will underestimate/overestimate the average statewide rate.
 Follow-up Steps: A possible follow-up to this approach could use the 
 national average rate as a proxy to replace the missing data.
 ;
-proc means
-        mean
-        noprint
-        data=unemployment_analytic_file
-    ;
-    class
-        State
-    ;
-    var
-        Median_Household_2015_Income Unemployment_2015_rate
-    ;
-    output
-        out=unemployment_analytic_file_temp
-    ;
-run;
-
-proc sort
-        data=unemployment_analytic_file_temp(where=(_STAT_="MEAN"))
-    ;
-    by
-        descending Unemployment_2015_rate
-    ;
-run;
 
 proc print
         noobs
@@ -161,9 +136,9 @@ footnote2
 'However, this is an incredibly course analysis since only quartiles are used, so a follow-up analysis using a more sensitive instrument (like beta regression) might find useful correlations.'
 ;
 *
-Methodology: Use Proc format to create formats to bin values of 
-Median_Household_2015_Income and Unemployment_2015_rate based upon their 
-spread, and use proc freq to cross-tabulate bins.
+Methodology: Use Proc means to get q1, q3, mean stats of each variable, create 
+formats to bin values of Median_Household_2015_Income and Unemployment_2015_rate
+based upon their spread, and use proc freq to cross-tabulate bins.
 
 Limitations: Even though predictive modeling is specified in the research
 questions, this methodology solely relies on a crude descriptive technique
