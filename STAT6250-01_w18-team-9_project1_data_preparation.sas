@@ -77,7 +77,22 @@ a percent of the State Total Median Household Income (deleted)
 
 * environmental setup;
 
+* create output formats;
 
+proc format;
+    value Median_Household_2015_Income_bins
+        low-40572="Q1 Income"
+        40572-48724.97="Q2 Income"
+        48724.97-54337="Q3 Income"
+        54337-high="Q4 Income"
+    ;
+    value Unemployment_2015_rate_bins
+        low-<4.2="Q1 UR "
+        4.2-<5.74="Q2 UR "
+        5.74-<6.6="Q3 UR"
+        6.6-high="Q4 UR"
+    ;
+run;
 * setup environmental parameters;
 %let inputDatasetURL =
 https://github.com/stat6250/team-9_project1/blob/master/Unemployment.xls?raw=true
@@ -238,4 +253,33 @@ data unemployment_analytic_file;
 	set Unemployment_raw;
 run;
 
+*
+Use proc means to study the unemployment rate and median household
+income of state, and output the results to a temporary dataset, and use PROC 
+SORT to extract and sort just the means the temporary dateset, which will be
+used as part of data analysis by XY.
+;
 
+proc means
+        mean
+        noprint
+        data=unemployment_analytic_file
+    ;
+    class
+        State
+    ;
+    var
+        Median_Household_2015_Income Unemployment_2015_rate
+    ;
+    output
+        out=unemployment_analytic_file_temp
+    ;
+run;
+
+proc sort
+        data=unemployment_analytic_file_temp(where=(_STAT_="MEAN"))
+    ;
+    by
+        descending Unemployment_2015_rate
+    ;
+run;
