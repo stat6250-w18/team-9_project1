@@ -108,7 +108,7 @@ national average rate as a proxy to replace the missing data.
 
 proc print
         noobs
-        data=unemployment_analytic_file_temp(obs=10)
+        data=unemployment_analytic_file(obs=10)
     ;
     id
         State
