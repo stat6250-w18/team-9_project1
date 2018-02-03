@@ -9,6 +9,7 @@ questions regarding Employment, Unemployment, and Median Household Income
 
 STAT6250-01_w18-team-9_project1_data_preparation.sas, which is assumed to be
 in the same directory as this file
+
 See included file for dataset properties
 ;
 
@@ -23,32 +24,23 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 
 
 title1
-'Research Question 1: What is the mean value for the US unemployment rates by 
-counties in 2015?'
+'Research Question 1: What is the mean value for the US unemployment rates by counties in 2015?'
 ;
 
 title2
-'Rationale: This would help provide insights on the US unemployment rates per 
-counties in 2015'
+'Rationale: This would help provide insights on the US unemployment rates per counties in 2015'
 ;
 
 footnote1
-'Based on the above output, the mean which is the average of all unemployment 
-rates in the US in 2015 is 5.47%. In other words, there are 5.47% of civilian 
-labor force are not being employed during this period.'
+'Based on the above output, the mean which is the average of all unemployment rates in the US in 2015 is 5.47%. In other words, there are 5.47% of civilian labor force are not being employed during this period.'
 ;
 
 footnote2
-'The lowest minimum rate is 1.70% and the highest rate is 23.50% so we can 
-conclude there is a very huge difference in term of unemployment
-rates among counties in 2015. By that, we also see that the unemployment is 
-not equally distributed among the districts.'
+'The lowest minimum rate is 1.70% and the highest rate is 23.50% so we can conclude there is a very huge difference in term of unemploymentrates among counties in 2015. By that, we also see that the unemployment is not equally distributed among the districts.'
 ;
 
 footnote3
-'The unemployment statistics can be seen as an indicator for the following 
-data analysis steps which might help provide insights of the unemployment rates
-by states'
+'The unemployment statistics can be seen as an indicator for the following data analysis steps which might help provide insights of the unemployment ratesby states'
 ;
 
 *
@@ -81,8 +73,7 @@ footnote;
 
 
 title1
-'Research Question 2: What are the top twenty counties with the highest mean 
-values of "Median_Household_2015_Income"?'
+'Research Question 2: What are the top twenty counties with the highest mean values of "Median_Household_2015_Income"?'
 ;
 
 title2
@@ -90,20 +81,15 @@ title2
 ;
 
 footnote1
-'Based on the above output, we are able to identify the top 20 richest county
-in the country in case job seekers are looking for a new place for job 
-relocation while still maintaining their household income.'
+'Based on the above output, we are able to identify the top 20 richest county in the country in case job seekers are looking for a new place for job relocation while still maintaining their household income.'
 ;
 
 footnote2
-'Based on the above output, we are also able to identify most richest counties 
-in term of median house income in 2015 are mostly located in East Coast.'
+'Based on the above output, we are also able to identify most richest counties in term of median house income in 2015 are mostly located in East Coast.'
 ;
 
 footnote3
-'Further analysis to look for geographic patterns is clearly indicated, given 
-such high mean household income in West Coast are only located in Bay Area, 
-California.'
+'Further analysis to look for geographic patterns is clearly indicated, given such high mean household income in West Coast are only located in Bay Area, California.'
 ;
 *
 Methodology: Use PROC PRINT to print just the first twenty observations from
@@ -115,12 +101,6 @@ Possible Follow-up Steps: More carefully clean the values of the variable
 Percent_Eligible_FRPM_K12 so that the means computed do not include any possible
 illegal values, and better handle missing data, e.g., by using a previous year's
 data or a rolling average of previous years' data as a proxy.
-;
-* 
-Use PROC MEANS to compute the mean of Percent_Eligible_FRPM_K12 for
-District_Name, and output the results to a temporary dataset, and use PROC SORT
-to extract and sort just the means the temporary dateset, which will be used as
-part of data analysis by IL.
 ;
 
 proc means
@@ -162,69 +142,37 @@ footnote;
 
 
 title1
-'Research Question 3: Is it possible to use "Unmployment Rate" to predict 
-"Median household income"?'
+'Research Question 3: What is the distribution of all counties that have unemployment rate in 2016 less than 5.46% and the median househould income greater than $100,000?'
 ;
 
 title2
-'Rationale: This would help determine whether counties have high 
-unemployment rates need further assistance from federal government .'
+'Rationale: This would help job seekers look for any counties that have lower unemployement rates in 2016 and median household income higher than $100,000'
 ;
 
 footnote1
-'Based on the above output, there is no clear inferential pattern to predict
-the unemployment rate from the median household income.'
+'Based on the above output, there are only 12 counties in 2016 met conditions where the unemployement rate is less than the national unemployment rate mean and the medidan household income is higher than $100,000'
 ;
 *
-Methodology: Use Proc format to create formats to bin values of 
-Median_Household_2015_Income and Employment_2015 based upon their spread, and 
-use proc freq to cross-tabulate bins.
-Limitations: Even though predictive modeling is specified in the research 
-questions, this methodology solely relies on a crude descriptive technique
-by looking at correlations along quartile values, which could be too coarse a
-method to find actual association between the variables.
-Follow-up Steps: A possible follow-up to this approach could use an inferential
-statistical technique like beta regression, or use linear regression models to 
-find the relationship.
+Methodology: Use proc freq to create one-way frequency
+
+Limitations: This methodology does not account for any counties/districts with 
+missing data.
+
+Possible Follow-up: Carefully review the variables for employment rate, 
+unemployment rate, and median household income, clean up the missing data and
+maybe use an average rate as a proxy for increasing the accuracy. 
 ;
 
-proc means
-        min q1 mean q3 max
-        data=unemployment_analytic_file
-    ;
-    var
-        Median_Household_2015_Income 
-		Unemployment_2015_rate
-    ;
-    output
-        out=unemployment_analytic_file_temp
-    ;
-run;
-proc format;
-    value Median_Household_2015_Income_bins
-        low-40572="Q1 Income"
-        40572-48724.97="Q2 Income"
-        48724.97-54337="Q3 Income"
-        54337-high="Q4 Income"
-    ;
-    value Unemployment_2015_rate_bins
-        low-<4.2="Q1 UR "
-        4.2-<5.74="Q2 UR "
-        5.74-<6.6="Q3 UR"
-        6.6-high="Q4 UR"
-    ;
-run;
-proc freq
-    data=unemployment_analytic_file
-    ;
-    table
-        Median_Household_2015_Income*Unemployment_2015_rate
-        / missing norow nocol nopercent
-    ;
-	format
-         Median_Household_2015_Income Median_Household_2015_Income_bins.
-         Unemployment_2015_rate Unemployment_2015_rate_bins.
-    ;
+proc freq 
+	data=unemployment_analytic_file
+	;
+	tables 
+		Unemployment_rate_2016
+	;
+	where Unemployment_rate_2016<5.46
+		and Rural_urban_continuum_code_2013=1
+		and Median_Household_2015_Income>100000	
+	;
 run;
 title;
 footnote;
