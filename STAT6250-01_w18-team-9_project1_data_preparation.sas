@@ -6,21 +6,22 @@
 * 
 This file prepares the dataset described below for analysis.
 
-[Dataset Name] Employment, Unemployment(2007-2016), and Median Household Income (2015 only)
+[Dataset Name] Employment, Unemployment(2007-2016), and Median Household Income 
+(2015 only)
 
 [Experimental Units] United States Department of Agriculture Economic Research 
 Service, County-level Data Sets
 
-[Number of Observations] 3274
+[Number of Observations] 3223
 
 [Number of Features] 47
 
-[Data Source] https://www.ers.usda.gov/webdocs/DataFiles/48747/Unemployment.xls?v=42894
+[Data Source] 
+https://www.ers.usda.gov/webdocs/DataFiles/48747/Unemployment.xls?v=42894
 
 [Data Dictionary] https://www.ers.usda.gov/data-products/county-level-data-sets/
 
-FIPStxt:Dataset unique identifier, (renamed FIPStxt to FIPS_Code as a primary 
-key to match variable decscription databse) 
+FIPS_Code:Dataset unique identifier, primary key 
 State:State-County
 Area_name:State or County name
 Rural_urban_continuum_code_2013:Rural-urban Continuum Code, 2013
@@ -69,7 +70,7 @@ Unemployed_2016:Number unemployed annual average, 2016
 Unemployment_rate_2016:Unemployment rate, 2016
 Median_Household_Income_2015:Median household Income Annual Average, 2015
 Med_HH_Income_Percent_of_State_Total_2015:County Household Median Income as 
-a percent of the State Total Median Household Income (deleted)
+a percent of the State Total Median Household Income
 
 [Unique ID Schema] The column ‘FIPS_Code’ is a primary key.
 ;
