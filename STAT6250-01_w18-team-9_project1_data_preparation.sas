@@ -292,7 +292,6 @@ to other teammate by LS.
 proc sort
         data=Unemployment_analytic_file
 		out=Unemployment_analytic_file_temp1
-
     ;
     by
         descending Unemployment_rate_2016
