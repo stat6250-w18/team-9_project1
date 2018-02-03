@@ -58,6 +58,7 @@ do not include anypossible illegal values, and better handle missing data.
 
 proc means
 		min q1 mean q3 max
+		maxdec=1
 		data=unemployment_analytic_file
 	;
 	var
@@ -104,22 +105,13 @@ Possible Follow-up Steps: More carefully clean the duplicate values of
 the variableunemployment rate before we submit this code, do some 
 noduplicate checks in data prep file.
 ;
-proc sort
-        data=Unemployment_analytic_file
-    ;
-    by
-        descending Unemployment_rate_2016
-    ;
-run;
+
 proc print
-        noobs
-        data=Unemployment_analytic_file(obs=20)
-    ;
-    id
-        Area_Name
-		Unemployed_2016
+        data=Unemployment_analytic_file_temp1(obs=20)
     ;
     var
+		Area_Name
+		Unemployed_2016
         Unemployment_rate_2016
     ;
 run;
@@ -179,4 +171,3 @@ proc means
 run;
 title;
 footnote;
-
