@@ -54,6 +54,7 @@ do not include anypossible illegal values, and better handle missing data.
 
 proc means
 		min q1 mean q3 max
+		maxdec=1
 		data=unemployment_analytic_file
 	;
 	var
@@ -90,7 +91,7 @@ footnote3
 *
 Methodology: Use PORC SORT to decending the column "Unemployment_rate_2016",
 and Use PROC PRINT to print just the first twenty observations from
-the dataset file.
+the dataset file.(Move the PORC SORT to data-prep file)
 Limitations: If there are duplicate values with respect to the columns 
 specified, thenrows are typically moved around as little as possible, 
 meaning that they willremain in the same order as in the original dataset.
@@ -98,23 +99,16 @@ Possible Follow-up Steps: More carefully clean the duplicate values of
 the variableunemployment rate before we submit this code, do some 
 noduplicate checks in data prep file.
 ;
-proc sort
-        data=Unemployment_analytic_file
-    ;
-    by
-        descending Unemployment_rate_2016
-    ;
-run;
+
+	
+
 proc print
-        noobs
-        data=Unemployment_analytic_file(obs=20)
-    ;
-    id
-        Area_Name
-		Unemployed_2016
+        data=Unemployment_analytic_file_temp1(obs=20)
     ;
     var
-        Unemployment_rate_2016
+		Area_Name
+		Unemployed_2016
+		Unemployment_rate_2016
     ;
 run;
 title;

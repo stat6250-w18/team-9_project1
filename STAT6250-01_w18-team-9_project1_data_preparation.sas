@@ -283,3 +283,18 @@ proc sort
         descending Unemployment_2015_rate
     ;
 run;
+*
+Use PORC SORT to decending the column "Unemployment_rate_2016"
+and output the results to Unemployment analytic temp1 which is different
+to other teammate by LS.
+;
+
+proc sort
+        data=Unemployment_analytic_file
+		out=Unemployment_analytic_file_temp1
+
+    ;
+    by
+        descending Unemployment_rate_2016
+    ;
+run;
