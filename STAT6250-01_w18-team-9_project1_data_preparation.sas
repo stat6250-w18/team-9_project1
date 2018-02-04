@@ -198,8 +198,7 @@ data unemployment_analytic_file;
 		Employed_2016
 		Unemployed_2016
 		Unemployment_rate_2016
-		Median_Household_2015_Income
-		
+		Median_Household_2015_Income		
     ;
 	keep
 		FIPS_Code
@@ -248,8 +247,7 @@ data unemployment_analytic_file;
 		Employed_2016
 		Unemployed_2016
 		Unemployment_rate_2016
-		Median_Household_2015_Income
-		
+		Median_Household_2015_Income		
     ;
 	set Unemployment_raw;
 run;
@@ -298,3 +296,16 @@ proc sort
         descending Unemployment_rate_2016
     ;
 run;
+*
+Use PROC SORT to descending Median_Household_2015_Income by YY
+;
+
+proc sort
+        data=Unemployment_analytic_file_temp(where=(_STAT_="MEAN"))
+    ;
+    by
+        descending Median_Household_2015_Income
+    ;
+run;
+
+

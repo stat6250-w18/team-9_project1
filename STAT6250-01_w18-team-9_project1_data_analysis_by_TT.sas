@@ -119,13 +119,6 @@ proc means
     ;
 run;
 
-proc sort
-        data=Unemployment_analytic_file_temp(where=(_STAT_="MEAN"))
-    ;
-    by
-        descending Median_Household_2015_Income
-    ;
-run;
 proc print
         noobs
         data=Unemployment_analytic_file_temp(obs=20)
