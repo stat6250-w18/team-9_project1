@@ -43,6 +43,7 @@ footnote3
 'The unemployment statistics can be seen as an indicator for the following data analysis steps which might help provide insights of the unemployment ratesby states'
 ;
 
+
 *
 Methodology: Use PROC MEANS to get the descpriptive stats of all the 
 observations from the temporary dataset created in the corresponding data-prep 
@@ -55,7 +56,6 @@ Possible Follow-up Steps: Carefully review the variables for employment rate,
 unemployment rate, and median household income, clean up the missing data and
 maybe use an average rate as a proxy for increasing the accuracy.
 ;
-
 
 proc means
         min q1 mean q3 max
@@ -91,6 +91,8 @@ footnote2
 footnote3
 'Further analysis to look for geographic patterns is clearly indicated, given such high mean household income in West Coast are only located in Bay Area, California.'
 ;
+
+
 *
 Methodology: Use PROC PRINT to print just the first twenty observations from
 the temporary dataset created in the corresponding dataset file.
@@ -98,7 +100,7 @@ the temporary dataset created in the corresponding dataset file.
 Limitations: This methodology does not account for counties with missing data,
 
 Possible Follow-up Steps: More carefully clean the values of the variable
-Percent_Eligible_FRPM_K12 so that the means computed do not include any possible
+Median_Household_2015_Income so that the means computed do not include any possible
 illegal values, and better handle missing data, e.g., by using a previous year's
 data or a rolling average of previous years' data as a proxy.
 ;
@@ -145,6 +147,8 @@ title2
 footnote1
 'Based on the above output, there are only 12 counties in 2016 met conditions where the unemployement rate is less than the national unemployment rate mean and the medidan household income is higher than $100,000'
 ;
+
+
 *
 Methodology: Use proc freq to create one-way frequency
 
