@@ -79,7 +79,6 @@ a percent of the State Total Median Household Income
 * environmental setup;
 
 * create output formats;
-
 proc format;
     value Median_Household_2015_Income_bins
         low-40572="Q1 Income"
@@ -94,6 +93,8 @@ proc format;
         6.6-high="Q4 UR"
     ;
 run;
+
+
 * setup environmental parameters;
 %let inputDatasetURL =
 https://github.com/stat6250/team-9_project1/blob/master/Unemployment.xls?raw=true
@@ -134,6 +135,7 @@ https://github.com/stat6250/team-9_project1/blob/master/Unemployment.xls?raw=tru
     &inputDatasetURL.,
     xls
 )
+
 
 * check raw Unemployment dataset for duplicates with respect to its primary key;
 proc sort
@@ -252,6 +254,7 @@ data unemployment_analytic_file;
 	set Unemployment_raw;
 run;
 
+
 *
 Use proc means to study the unemployment rate and median household
 income of state, and output the results to a temporary dataset, and use PROC 
@@ -282,8 +285,10 @@ proc sort
         descending Unemployment_2015_rate
     ;
 run;
+
+
 *
-Use PORC SORT to decending the column "Unemployment_rate_2016"
+Use PROC SORT to descending the column "Unemployment_rate_2016"
 and output the results to Unemployment analytic temp1 which is different
 to other teammate by LS.
 ;
@@ -296,6 +301,8 @@ proc sort
         descending Unemployment_rate_2016
     ;
 run;
+
+
 *
 Use PROC SORT to descending Median_Household_2015_Income by YY
 ;
