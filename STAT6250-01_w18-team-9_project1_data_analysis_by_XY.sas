@@ -21,8 +21,8 @@ X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPA
 
 
 
-* load external file that generates analytic dataset FRPM1516_analytic_file;
-%include '.\STAT6250-01_w18-team-9_project1_data_preparation';
+* load external file that generates analytic dataset unemployment_analytic_file;
+%include '.\STAT6250-01_w18-team-9_project1_data_preparation.sas';
 
 
 title1
@@ -73,19 +73,19 @@ footnote;
 
 
 title1
-'Research Question2: What are the top 10 states with the highest mean values of unemployment rate in 2015?'
+'Research Question2: What are the top 10 states with the highest median household income in 2015, and also what are their unemployment rate?'
 ;
 
 title2
-'Rationale: This should show the states in the most need of improving emloyment status.'
+'Rationale: This should compare the states of economic well being and unemployment status .'
 ;
 
 footnote1
-'Based on the above output, PR has the highest unemployment rate of 14.17%, which is almost 2.5 times of national average rate.'
+'Based on the output, DC has the highest median household income, which is almost 1.5 times of national average rate.'
 ;
 
 footnote2
-'When we compare the state median household income with the top ten highestunemployment rate states, we found all the states, execpt for PR and AK, are all below the national average household income amount.'
+'When we compare the unemployment rate states with top ten highest state median household income, we found DC, NJ and AK has much higher unemployment than national average.'
 ;
 
 footnote3
@@ -111,7 +111,7 @@ proc print
         State
     ;
     var
-        Unemployment_2015_rate Median_Household_2015_Income
+        Median_Household_2015_Income Unemployment_2015_rate
     ;
 run;
 title;
