@@ -66,9 +66,6 @@ proc means
     var
         Median_Household_2015_Income Unemployment_2015_rate
     ;
-    output
-        out=unemployment_analytic_file_temp
-    ;
 run;
 
 title;
